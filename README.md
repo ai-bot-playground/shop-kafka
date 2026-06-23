@@ -6,10 +6,10 @@ konfigurację brokera (tryb **KRaft**, bez Zookeepera), **definicje tematów** o
 
 ## Co tu trzymać
 
-- Konfiguracja brokera (zmienne `KAFKA_*` — patrz docker-compose w shop-documentation).
+- Konfiguracja brokera (zmienne `KAFKA_*` — patrz docker-compose w shop-infra).
 - Definicje tematów (liczba partycji, retencja) jako kod / skrypt inicjujący.
 - **Biblioteka kontraktów**: schematy zdarzeń (DTO / Avro / JSON Schema) jako
-  wersjonowany artefakt, który `shop-order`, `shop-inwentory`, `shop-payment` i
+  wersjonowany artefakt, który `shop-order`, `shop-inventory`, `shop-payment` i
   `shop-notification` dodają jako zależność. Dzięki temu wszystkie serwisy mówią
   tym samym „językiem" zdarzeń, a zmiana schematu jest kontrolowana w jednym miejscu.
 
@@ -41,7 +41,7 @@ w przyszłości dołożyć dedykowany temat wraz z producentem komend powiadomie
 
 ## Ustawienia konsumenta (do zaimplementowania)
 
-- Osobny `group.id` per serwis: `shop-inwentory`, `shop-order`, `shop-payment`,
+- Osobny `group.id` per serwis: `shop-inventory`, `shop-order`, `shop-payment`,
   `shop-notification`.
 - Dostarczanie *at-least-once* → konsument **musi być idempotentny**
   (tabela `processed_events` z deduplikacją po `eventId`).
